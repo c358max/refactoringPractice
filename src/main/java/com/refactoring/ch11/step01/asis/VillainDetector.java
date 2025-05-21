@@ -3,7 +3,7 @@ package com.refactoring.ch11.step01.asis;
 import java.util.List;
 
 public class VillainDetector {
-    public String findMiscreant(List<String> people) {
+    public String alertForMiscreant(List<String> people) {
         for (String p : people) {
             if (p.equals("조커")) {
                 setOffAlarms();
