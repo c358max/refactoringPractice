@@ -19,11 +19,9 @@ public class VillainDetector {
 
     public String findMiscreant(String person) {
         if (person.equals("조커")) {
-            setOffAlarms();
             return "조커";
         }
         if (person.equals("사루만")) {
-            setOffAlarms();
             return "사루만";
         }
         return "";
