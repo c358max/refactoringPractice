@@ -1173,7 +1173,10 @@
     <inspection_tool class="Junit4Converter" enabled="true" level="INFORMATION" enabled_by_default="true" />
     <inspection_tool class="Junit4RunWithInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="JvmCoverageInspection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JvmDfaAnalysis.Global" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="JvmDfaAnalysis.Local" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="JvmLinesOfCodeInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="JvmTaintAnalysis" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="KDocUnresolvedReference" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="KarmaConfigFile" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="KeySetIterationMayUseEntrySet" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
@@ -2225,6 +2228,7 @@
     <inspection_tool class="TaglibDomModelInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="TailRecursion" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
     <inspection_tool class="TailRecursionJS" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="TaintConfigAnnotator" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="TaskProblemsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="TestCaseInProductCode" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="TestCaseWithConstructor" enabled="true" level="WARNING" enabled_by_default="true" />
