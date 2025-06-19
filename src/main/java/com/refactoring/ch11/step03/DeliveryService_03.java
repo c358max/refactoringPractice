@@ -1,17 +1,24 @@
 package com.refactoring.ch11.step03;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Set;
 
-public class DeliveryService {
+/**
+ * 11.3 플래그 인수 제거하기 (Remove Flag Argument)
+ * * deliveryTime 계산 로직 중복 제거
+ * * 지역별 배송시간 정보를 상수로 분리
+ * * DeliveryType 열거형(enum)으로 배송 타입 정의
+ */
+public class DeliveryService_03 {
 
+    // 지역별 배송시간 정보
     private static final Set<String> RUSH_ZONE_1 = Set.of("MA", "CT");
     private static final Set<String> RUSH_ZONE_2 = Set.of("NY", "NH");
 
     private static final Set<String> REGULAR_ZONE_1 = Set.of("MA", "CT", "NY");
     private static final Set<String> REGULAR_ZONE_2 = Set.of("ME", "NH");
 
+    // 계산로직 중복 제거를 위해 DeliveryType 매개변수 사용
     public LocalDate calculateDeliveryDate(Order order, DeliveryType type) {
         int deliveryTime;
         int baseTime = (type == DeliveryType.RUSH) ? 1 : 2;
@@ -28,36 +35,6 @@ public class DeliveryService {
         }
 
         return order.getPlacedOn().plusDays(baseTime + deliveryTime);
-    }
-
-    // 아래 메서드 삭제
-    public LocalDate rushDeliveryDate(Order anOrder) {
-        int deliveryTime;
-
-        if (Arrays.asList("MA", "CT").contains(anOrder.getDeliveryState())) {
-            deliveryTime = 1;
-        } else if (Arrays.asList("NY", "NH").contains(anOrder.getDeliveryState())) {
-            deliveryTime = 2;
-        } else {
-            deliveryTime = 3;
-        }
-
-        return anOrder.getPlacedOn().plusDays(1 + deliveryTime);
-    }
-
-    // 아래 메서드 삭제
-    public LocalDate regularDeliveryDate(Order anOrder) {
-        int deliveryTime;
-
-        if (Arrays.asList("MA", "CT", "NY").contains(anOrder.getDeliveryState())) {
-            deliveryTime = 2;
-        } else if (Arrays.asList("ME", "NH").contains(anOrder.getDeliveryState())) {
-            deliveryTime = 3;
-        } else {
-            deliveryTime = 4;
-        }
-
-        return anOrder.getPlacedOn().plusDays(2 + deliveryTime);
     }
 
     public static void main(String[] args){
