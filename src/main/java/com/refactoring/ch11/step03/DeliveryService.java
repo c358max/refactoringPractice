@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Set;
 
+/**
+ * 11.3 플래그 인수 제거하기 (Remove Flag Argument)
+ */
 public class DeliveryService {
 
     private static final Set<String> RUSH_ZONE_1 = Set.of("MA", "CT");

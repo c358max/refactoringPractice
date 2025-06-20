@@ -1,6 +1,10 @@
-package com.refactoring.ch11.step04.tobe;
+package com.refactoring.ch11.step04;
 
-// 방의 온도 범위를 나타내는 클래스
+/**
+ * TemperatureRange 클래스는 온도 범위를 나타냅니다.
+ * low와 high 속성을 가지고 있으며, 생성자를 통해 초기화
+ * getLow()와 getHigh() 메서드를 통해 각각의 값을 반환
+ */
 public class TemperatureRange {
     private int low;
     private int high;
