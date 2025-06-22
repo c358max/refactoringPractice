@@ -2,9 +2,10 @@ package com.refactoring.ch11.step09;
 
 /**
  * 11.9 함수를 명령으로 바꾸기(Replace Function with Command)
- * 기존 계산로직을 별도의 클래스로 분리하여 책임을 명확히 하고 가독성을 향상시킴
+ * ScoreService에 있는 계산로직을 Score 클래스로 분리
+ * ScoreService에서는 Score의 execute() 메서드를 호출하여 점수를 계산
  */
-public class Scorer {
+public class Scorer_01 {
     private final Candidate candidate;
     private final MedicalExam medicalExam;
     private final ScoringGuide scoringGuide;
@@ -14,37 +15,27 @@ public class Scorer {
     private boolean highMedicalRiskFlag = false;
     private String certificationGrade = "regular";
 
-    public Scorer(Candidate candidate, MedicalExam medicalExam, ScoringGuide scoringGuide) {
+    public Scorer_01(Candidate candidate, MedicalExam medicalExam, ScoringGuide scoringGuide) {
         this.candidate = candidate;
         this.medicalExam = medicalExam;
         this.scoringGuide = scoringGuide;
     }
 
     public int execute() {
-        assessMedicalRisk();
-        assessCertification();
-        penalizeHealthRisk();
-        return result;
-    }
-
-    // 흡연 여부에 따른 건강 리스크 반영
-    private void assessMedicalRisk() {
+        // 흡연자인 경우 건강 위험도 증가 및 건강 위험 플래그 설정
         if (medicalExam.isSmoker()) {
             healthLevel += 10;
-            highMedicalRiskFlag = true;
+            highMedicalRiskFlag = true;     // 건강 위험 상태 플래그 설정
         }
-    }
 
-    // 인증 등급이 낮은 출신 지역인지 판단하고 감점
-    private void assessCertification() {
+        // 인증 등급이 낮은 출신 지역일 경우 점수 감점
         if (scoringGuide.stateWithLowCertification(candidate.getOriginState())) {
             certificationGrade = "low";
             result -= 5;
         }
-    }
 
-    // 건강 위험이 기준을 초과한 만큼 감점
-    private void penalizeHealthRisk() {
+        // 건강 위험도가 5를 초과한 만큼 감점
         result -= Math.max(healthLevel - 5, 0);
+        return result;
     }
 }

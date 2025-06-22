@@ -2,9 +2,9 @@ package com.refactoring.ch11.step09;
 
 /**
  * 11.9 함수를 명령으로 바꾸기(Replace Function with Command)
- * 기존 계산로직을 별도의 클래스로 분리하여 책임을 명확히 하고 가독성을 향상시킴
+ * execute() 메서드의 로직을 별도의 메서드로 분리하여 가독성을 향상시킴
  */
-public class Scorer {
+public class Scorer_02 {
     private final Candidate candidate;
     private final MedicalExam medicalExam;
     private final ScoringGuide scoringGuide;
@@ -14,7 +14,7 @@ public class Scorer {
     private boolean highMedicalRiskFlag = false;
     private String certificationGrade = "regular";
 
-    public Scorer(Candidate candidate, MedicalExam medicalExam, ScoringGuide scoringGuide) {
+    public Scorer_02(Candidate candidate, MedicalExam medicalExam, ScoringGuide scoringGuide) {
         this.candidate = candidate;
         this.medicalExam = medicalExam;
         this.scoringGuide = scoringGuide;

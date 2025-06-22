@@ -1,11 +1,9 @@
 package com.refactoring.ch11.step09;
 
 public class Candidate {
-    private String name;
     private String originState;
 
-    public Candidate(String name, String originState) {
-        this.name = name;
+    public Candidate(String originState) {
         this.originState = originState;
     }
 
