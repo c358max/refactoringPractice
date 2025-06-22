@@ -1,6 +1,7 @@
 package com.refactoring.ch11.step08;
 
 import com.refactoring.ch11.step08.Employee;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,67 +10,60 @@ class EmployeeTest {
 
 //    @Test
 //    void createEngineer() {
-//        Employee emp = new Employee("이순신", "E");
+//        Employee emp = new Employee("David", "E");
 //
-//        assertEquals("이순신", emp.getName());
+//        assertEquals("David", emp.getName());
 //        assertEquals("Engineer", emp.getType());
 //    }
 //
 //    @Test
 //    void createManager() {
-//        Employee emp = new Employee("김유신", "M");
+//        Employee emp = new Employee("Johnson", "M");
 //
-//        assertEquals("김유신", emp.getName());
+//        assertEquals("Johnson", emp.getName());
 //        assertEquals("Manager", emp.getType());
 //    }
 //
 //    @Test
 //    void createSalesperson() {
-//        Employee emp = new Employee("장보고", "S");
+//        Employee emp = new Employee("Alice", "S");
 //
-//        assertEquals("장보고", emp.getName());
+//        assertEquals("Alice", emp.getName());
 //        assertEquals("Salesperson", emp.getType());
 //    }
 //
 //    @Test
 //    void createWithInvalidTypeCode_shouldReturnUnknown() {
-//        Employee emp = new Employee("홍길동", "X");
+//        Employee emp = new Employee("Nam", "X");
 //
-//        assertEquals("홍길동", emp.getName());
+//        assertEquals("Nam", emp.getName());
 //        assertEquals("Unknown", emp.getType());  // 예외 없이 "Unknown" 반환
 //    }
-//
+
+    @DisplayName("엔지니어 생성 테스트")
     @Test
     void createValidEngineer() {
-        Employee emp = Employee.createEmployee("이순신", "E");
+        Employee emp = Employee.createEngineer("David");
 
-        assertEquals("이순신", emp.getName());
-        assertEquals("Engineer", emp.getType());
+        assertEquals("David", emp.getName());
+        assertEquals(EmployeeType.ENGINEER, emp.getType());
     }
 
+    @DisplayName("매니저 생성 테스트")
     @Test
     void createValidManager() {
-        Employee emp = Employee.createEmployee("김유신", "M");
+        Employee emp = Employee.createManager("Johnson");
 
-        assertEquals("김유신", emp.getName());
-        assertEquals("Manager", emp.getType());
+        assertEquals("Johnson", emp.getName());
+        assertEquals(EmployeeType.MANAGER, emp.getType());
     }
 
+    @DisplayName("세일즈맨 생성 테스트")
     @Test
     void createValidSalesperson() {
-        Employee emp = Employee.createEmployee("장보고", "S");
+        Employee emp = Employee.createSalesperson("Alice");
 
-        assertEquals("장보고", emp.getName());
-        assertEquals("Salesperson", emp.getType());
-    }
-
-    @Test
-    void createInvalidTypeCode_shouldThrowException() {
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> Employee.createEmployee("홍길동", "X")
-        );
-
-        assertEquals("Invalid type code: X", exception.getMessage());
+        assertEquals("Alice", emp.getName());
+        assertEquals(EmployeeType.SALESPERSON, emp.getType());
     }
 }
