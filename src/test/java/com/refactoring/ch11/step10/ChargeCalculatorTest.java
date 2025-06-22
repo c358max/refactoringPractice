@@ -1,60 +1,61 @@
 package com.refactoring.ch11.step10;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChargeCalculatorTest {
+
+    @DisplayName("정상 요금 계산 테스트")
     @Test
-    void 기본_요금_계산_정상작동() {
-        Customer customer = new Customer(0.15);
-        Provider provider = new Provider(10.0);
-        int usage = 200;
+    void testCalculateCharge_NormalCase() {
+        Customer customer = new Customer(100);
+        Provider provider = new Provider(300);
+        int usage = 50;
 
-//        ChargeCalculator calculator = new ChargeCalculator(customer, usage, provider);
-//        double result = calculator.getCharge();
-        double result = ChargeCalculator.calculateCharge(customer, usage, provider);
+        double expectedCharge = 100 * 50 + 300;    // 5000 + 300 = 5300
+        double actualCharge = ChargeCalculator.calculate(customer, usage, provider);
 
-        assertEquals(40.0, result);
+        assertEquals(expectedCharge, actualCharge, 0.001);
     }
 
+    @DisplayName("사용량이 0인 경우 요금 계산 테스트")
     @Test
-    void 사용량이_0이면_기본요금만_부과() {
-        Customer customer = new Customer(0.25);
-        Provider provider = new Provider(8.0);
+    void testCalculateCharge_ZeroUsage() {
+        Customer customer = new Customer(100);
+        Provider provider = new Provider(300);
         int usage = 0;
 
-//        ChargeCalculator calculator = new ChargeCalculator(customer, usage, provider);
-//        double result = calculator.getCharge();
-        double result = ChargeCalculator.calculateCharge(customer, usage, provider);
+        double expectedCharge = 0 + 300;
+        double actualCharge = ChargeCalculator.calculate(customer, usage, provider);
 
-
-        assertEquals(8.0, result);
+        assertEquals(expectedCharge, actualCharge, 0.001);
     }
 
+    @DisplayName("연결 요금이 0인 경우 테스트")
     @Test
-    void 고정요금이_0이면_순수단가만_계산() {
-        Customer customer = new Customer(0.1);
-        Provider provider = new Provider(0.0);
-        int usage = 150;
+    void testCalculateCharge_ZeroConnectionCharge() {
+        Customer customer = new Customer(120);
+        Provider provider = new Provider(0);
+        int usage = 10;
 
-//        ChargeCalculator calculator = new ChargeCalculator(customer, usage, provider);
-//        double result = calculator.getCharge();
-        double result = ChargeCalculator.calculateCharge(customer, usage, provider);
+        double expectedCharge = 120 * 10;
+        double actualCharge = ChargeCalculator.calculate(customer, usage, provider);
 
-        assertEquals(15.0, result);
+        assertEquals(expectedCharge, actualCharge, 0.001);
     }
 
+    @DisplayName("기본 단가가 0인 경우 테스트")
     @Test
-    void 마이너스_사용량_테스트() {
-        Customer customer = new Customer(0.2);
-        Provider provider = new Provider(5.0);
-        int usage = -50;
+    void testCalculateCharge_ZeroBaseRate() {
+        Customer customer = new Customer(0);
+        Provider provider = new Provider(500);
+        int usage = 100;
 
-//        ChargeCalculator calculator = new ChargeCalculator(customer, usage, provider);
-//        double result = calculator.getCharge();
-        double result = ChargeCalculator.calculateCharge(customer, usage, provider);
+        double expectedCharge = 0 + 500;
+        double actualCharge = ChargeCalculator.calculate(customer, usage, provider);
 
-        assertEquals(-5.0, result);
+        assertEquals(expectedCharge, actualCharge, 0.001);
     }
 }
