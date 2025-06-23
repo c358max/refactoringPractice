@@ -4,8 +4,11 @@ import java.util.List;
 
 /**
  * 11.11 수정된 값 반환하기(Return Modified Value)
+ * analyze() 메서드를 만들어 상태만 변경하는 명령 함수로 분리하고,
+ * getPace()는 질의 함수로서 값을 반환 -> 책임 분리
+ * 기존 매직넘버 상수처리
  */
-public class RouteAnalyzer {
+public class RouteAnalyzer_02 {
     private List<Point> points;
     private double totalAscent = 0;
     private double totalTime = 0;
@@ -14,17 +17,14 @@ public class RouteAnalyzer {
     private static final double TIME_PER_POINT = 5.0;       // 분
     private static final double DISTANCE_PER_POINT = 0.1;   // km
 
-    public RouteAnalyzer(List<Point> points) {
+    public RouteAnalyzer_02(List<Point> points) {
         this.points = points;
     }
 
-    public AnalysisResultDto analyze() {
-        computeTotalAscent();
-        computeTotalTimeBasedOnPointCount();
-        computeTotalDistance();
-        double pace = getPace();
-
-        return new AnalysisResultDto(totalAscent, totalTime, totalDistance, getPace());
+    public void analyze() {
+        calculateAscent();
+        calculateTime();
+        calculateDistance();
     }
 
     // 기존 computePace() 메서드를 getPace()로 변경
@@ -32,7 +32,7 @@ public class RouteAnalyzer {
         return totalTime / 60 / totalDistance;
     }
 
-    private void computeTotalAscent() {
+    private void calculateAscent() {
         for (int i = 1; i < points.size(); i++) {
             double verticalChange = points.get(i).getElevation() - points.get(i - 1).getElevation();
             if (verticalChange > 0)
@@ -40,11 +40,11 @@ public class RouteAnalyzer {
         }
     }
 
-    private void computeTotalTimeBasedOnPointCount() {
+    private void calculateTime() {
         totalTime = points.size() * TIME_PER_POINT;
     }
 
-    private void computeTotalDistance() {
+    private void calculateDistance() {
         totalDistance = points.size() * DISTANCE_PER_POINT;
     }
 
@@ -53,7 +53,7 @@ public class RouteAnalyzer {
         List<Point> points = List.of(
                 new Point(10), new Point(15), new Point(12)
         );
-        RouteAnalyzer_03 analyzer = new RouteAnalyzer_03(points);
+        RouteAnalyzer_02 analyzer = new RouteAnalyzer_02(points);
 
         analyzer.analyze();                 // 명령
         double pace = analyzer.getPace();   // 질의
@@ -61,4 +61,3 @@ public class RouteAnalyzer {
         System.out.println("페이스: " + pace);
     }
 }
-

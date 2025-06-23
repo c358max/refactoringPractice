@@ -1,5 +1,6 @@
 package com.refactoring.ch11.step11;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -18,35 +19,39 @@ class RouteAnalyzerTest {
         );
     }
 
+    @DisplayName("analyze() 호출 후 총 상승 고도 검증") // 총상승고도 = 20 + 25 = 45
     @Test
-    void analyze_호출_후_총상승고도_검증() {
+    void shouldCalculateTotalAscentCorrectly() {
         RouteAnalyzer analyzer = new RouteAnalyzer(samplePoints());
-        analyzer.analyze();
+        AnalysisResultDto result = analyzer.analyze();
 
-        assertEquals(45.0, analyzer.getTotalAscent(), 0.001);
+        assertEquals(45.0, result.totalAscent, 0.001);
     }
 
+    @DisplayName("analyze() 호출 후 총 시간 검증") // 시간 = 5개 포인트 * 1.5분 = 7.5분
     @Test
-    void analyze_호출_후_총시간_검증() {
+    void shouldCalculateTotalTimeCorrectly() {
         RouteAnalyzer analyzer = new RouteAnalyzer(samplePoints());
-        analyzer.analyze();
+        AnalysisResultDto result = analyzer.analyze();
 
-        assertEquals(7.5, analyzer.getTotalTime(), 0.001);
+        assertEquals(25.0, result.totalTime, 0.001);
     }
 
+    @DisplayName("analyze() 호출 후 총 거리 검증") // 거리 = 5개 포인트 * 0.1km = 4.0km
     @Test
-    void analyze_호출_후_총거리_검증() {
+    void shouldCalculateTotalDistanceCorrectly() {
         RouteAnalyzer analyzer = new RouteAnalyzer(samplePoints());
-        analyzer.analyze();
+        AnalysisResultDto result = analyzer.analyze();
 
-        assertEquals(4.0, analyzer.getTotalDistance(), 0.001);
+        assertEquals(0.5, result.totalDistance, 0.001);
     }
 
+    @DisplayName("analyze() 호출 후 페이스 계산 검증") // 페이스 = (7.5분 / 60) / 4.0km
     @Test
-    void analyze_호출_후_페이스_검증() {
+    void shouldCalculatePaceCorrectly() {
         RouteAnalyzer analyzer = new RouteAnalyzer(samplePoints());
-        analyzer.analyze();
+        AnalysisResultDto result = analyzer.analyze();
 
-        assertEquals(0.03125, analyzer.getPace(), 0.0001);
+        assertEquals(0.8333333333333334, result.pace, 0.0001);
     }
 }
