@@ -9,7 +9,7 @@ public class CountryData {
     static {
         // 샘플 데이터 초기화
         shippingRulesMap.put("KR", "Korea Shipping Rule");
-        shippingRulesMap.put("US", "US Shipping Rule");
+        shippingRulesMap.put("US", "United State Shipping Rule");
         shippingRulesMap.put("JP", "Japan Shipping Rule");
     }
 
