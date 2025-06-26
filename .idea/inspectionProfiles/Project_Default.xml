@@ -142,6 +142,9 @@
     <inspection_tool class="BvConfigDomInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="BvConstraintMappingsInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="CStyleArrayDeclaration" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
+    <inspection_tool class="CYAliasIllegalThis" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CYUnresolvedAlias" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CYUnusedAlias" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="CachedNumberConstructorCall" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
     <inspection_tool class="CallToNativeMethodWhileLocked" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
     <inspection_tool class="CallToSimpleGetterInClass" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES">
@@ -402,6 +405,7 @@
     <inspection_tool class="CssRedundantUnit" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="CssReplaceWithShorthandSafely" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="CssReplaceWithShorthandUnsafely" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="CssShorthandPropertyUsage" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="CssUnknownProperty" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="CssUnknownTarget" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="CssUnknownUnit" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -419,6 +423,12 @@
     </inspection_tool>
     <inspection_tool class="CyclomaticComplexityInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="CyclomaticComplexityJS" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CypressCommandNameDuplicate" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CypressCommandSignatureCheck" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CypressCommandSubjectValidation" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CypressCommandWithoutDeclaration" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CypressMultipleTimeOverwrite" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CypressOverwriteNonBuiltInCommand" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="DanglingJavadoc" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
     <inspection_tool class="DataClassPrivateConstructor" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="DataFlowIssue" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES">
@@ -1893,6 +1903,7 @@
     <inspection_tool class="ScheduledThreadPoolExecutorWithZeroCoreThreads" enabled="true" level="TEXT ATTRIBUTES" enabled_by_default="true" editorAttributes="CONSIDERATION_ATTRIBUTES" />
     <inspection_tool class="SecondUnsafeCall" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SecurityRoles" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="SelenideEmptyMatchText" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="SelfAssignment" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="SelfIncludingJspFiles" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="SelfReferenceConstructorParameter" enabled="true" level="WARNING" enabled_by_default="true" />
